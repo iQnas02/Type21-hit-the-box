@@ -13,11 +13,26 @@ function createMole() {
     mole.textContent = '🤖';
     const randomIndex = Math.floor(Math.random() * boxes.length);
     boxes[randomIndex].appendChild(mole);
-    mole.addEventListener('click', whackMole);
-}
 
+    // Set a timeout to remove the mole if not clicked
+    const timeoutId = setTimeout(function() {
+        mole.style.display = 'none'; // Hide the mole box after 1 second
+        setTimeout(function() {
+            mole.remove(); // Remove the mole from the DOM after hiding
+        }, 0); // Delay removal to ensure it's hidden before removing
+    }, 1000); // Adjust the timeout duration (in milliseconds) as needed
+
+    // Add click event listener to remove the mole when clicked
+    mole.addEventListener('click', function() {
+        whackMole(); // Call whackMole function when mole is clicked
+        mole.remove(); // Remove mole when clicked
+        clearTimeout(timeoutId); // Clear the timeout
+    });
+}
 // Function to handle whacking the mole
-function whackMole(event) {
+function whackMole() {
+    console.log("Mole whacked!"); // Log a message when mole is clicked
+
     event.target.remove();
     score++;
     updateScore()
