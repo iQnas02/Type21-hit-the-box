@@ -10,7 +10,7 @@ function createMole() {
     const mole = document.createElement('div');
     mole.classList.add('box');
     mole.classList.add('mole');
-    mole.textContent = '🐭';
+    mole.textContent = '🤖';
     const randomIndex = Math.floor(Math.random() * boxes.length);
     boxes[randomIndex].appendChild(mole);
     mole.addEventListener('click', whackMole);
@@ -55,4 +55,3 @@ function initGame() {
 
 startButton.addEventListener('click', startGame);
 initGame();
-
