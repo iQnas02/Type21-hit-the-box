@@ -20,6 +20,7 @@ function createMole() {
 function whackMole(event) {
     event.target.remove();
     score++;
+    updateScore()
 }
 
 // Function to start the game
